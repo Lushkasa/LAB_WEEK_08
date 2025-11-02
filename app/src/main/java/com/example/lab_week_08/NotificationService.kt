@@ -15,6 +15,9 @@ import androidx.core.content.ContextCompat
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import android.os.Handler
+import androidx.work.OneTimeWorkRequestBuilder
+import androidx.work.WorkManager
+import com.example.lab_week_08.worker.ThirdWorker
 
 class NotificationService : Service() {
     //In order to make the required notification, a service is required
@@ -169,6 +172,9 @@ class NotificationService : Service() {
             stopForeground(STOP_FOREGROUND_REMOVE)
             //Stop and destroy the service
             stopSelf()
+
+//            val thirdRequest = OneTimeWorkRequestBuilder<ThirdWorker>().addTag("THIRD_WORKER").build()
+//            WorkManager.getInstance(this).enqueue(thirdRequest)
         }
         return returnValue
     }
